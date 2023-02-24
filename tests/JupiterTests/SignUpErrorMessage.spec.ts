@@ -1,6 +1,7 @@
 import{test, expect} from '@playwright/test';
 
 test('Login error message', async ({page}) =>{
+    console.log('---*** Login error message ***---')
 
     await page.goto('https://jupiter.cloud.planittesting.com/#/')
 

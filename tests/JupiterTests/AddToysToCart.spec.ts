@@ -1,6 +1,7 @@
 import{expect, test} from '@playwright/test';
 
 test('Add toys to cart', async({page})=>{
+    console.log('---*** Add toys to cart ***---')
 
     await page.goto('https://jupiter.cloud.planittesting.com/')
 
@@ -17,10 +18,10 @@ test('Add toys to cart', async({page})=>{
     const value=await page.locator('//input[@name="quantity"]').getAttribute('value')
     expect(value).toEqual("1")
 
-    var price=await page.locator('//td[2]').textContent
+    let price=await page.locator('//td[2]').textContent();
    // console.log(price)
 
-    var subTotal=await page.locator('//td[2]').textContent
+    let subTotal=await page.locator('//td[2]').textContent();
     console.log(subTotal)
 
     if(price!=subTotal){
@@ -43,11 +44,12 @@ test('Add toys to cart', async({page})=>{
 
     await page.locator('//h1[contains(text(),"Processing Order")]').isVisible
 
-    const orderNumber=await page.locator('strong.ng-binding:nth-child(2)').innerText
+    let orderNumber=await page.locator('strong.ng-binding:nth-child(2)').textContent();
     console.log("order number is="+orderNumber)
 
    
-     await   page.locator('//a[contains(text(),"Shopping Again")]').isEnabled)
-        console.log('Shopping button is enabled')
+     let button:any=await page.locator('//a[contains(text(),"Shopping Again")]').isEnabled
+       if(button=true){console.log('Shopping button is enabled')}
+       else{console.log('Shopping button is not enabled')}
    
 })
